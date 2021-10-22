@@ -5,8 +5,82 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Calculator" Background="#FFEFF0F2" Width="400" Height="580" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" >
+    <DockPanel LastChildFill="True">
+        <Grid Height="100" DockPanel.Dock="Top" Background="WhiteSmoke">
+
+            <TextBox x:Name="tExp" FontSize="16"  Background="WhiteSmoke" BorderThickness="0" HorizontalContentAlignment="Right" Margin="15" Text="">
+                
+            </TextBox>
+            <TextBox x:Name="tRes" FontSize="36"  Background="WhiteSmoke" FontWeight="Bold"  BorderThickness="1" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Margin="15" Text="0">
+                
+            </TextBox>
+            
+            
+        </Grid>
         
-    </Grid>
+        
+        <Grid DockPanel.Dock="Top"  Height="50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="MCBtn" Click="MCBtn_Click"  Grid.Column="0"  Background="WhiteSmoke"  BorderThickness="0"  Content="MC" FontSize="14" FontWeight="Bold" />
+            <Button x:Name="MRBtn" Click="MRBtn_Click" Grid.Column="1"  Background="WhiteSmoke"  BorderThickness="0"  Content="MR" FontSize="14" FontWeight="Bold" />
+            <Button x:Name="MPBtn" Click="MPBtn_Click" Grid.Column="2"  Background="WhiteSmoke" BorderThickness="0"  Content="M+" FontSize="14" FontWeight="Bold" />
+            <Button x:Name="MMBtn" Click="MMBtn_Click" Grid.Column="3"  Background="WhiteSmoke" BorderThickness="0"  Content="M-" FontSize="14" FontWeight="Bold" />
+            <Button x:Name="MSBtn" Click="MSBtn_Click" Grid.Column="4"  Background="WhiteSmoke" BorderThickness="0"  Content="M" FontSize="14" FontWeight="Bold" />
+        </Grid>
+
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                
+            </Grid.ColumnDefinitions>
+                   
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button x:Name="PerBtn" Click="PerBtn_Click" Grid.Row="0" Grid.Column="0" Margin="2,1,1,1" FontSize="18" BorderThickness="0" >%</Button>
+            <Button x:Name="SqrBtn" Click="SqrBtn_Click" Grid.Row="0" Grid.Column="1" Margin="2,1,1,1" FontSize="18" BorderThickness="0" >√</Button>
+            <Button x:Name="PowBtn"  Click="PowBtn_Click"  Grid.Row="0" Grid.Column="2" Margin="2,1,1,1" FontSize="18" BorderThickness="0" >x^2</Button>
+            <Button x:Name="ReBtn" Click="ReBtn_Click"  Grid.Row="0" Grid.Column="3" Margin="2,1,1,1" FontSize="18" BorderThickness="0" >1/X</Button>
+            <Button x:Name="CEBtn" Click="CEBtn_Click"  Grid.Row="1" Grid.Column="0" Margin="2,1,1,1" FontSize="18" BorderThickness="0" >CE</Button>
+            <Button x:Name="CBtn" Click="CBtn_Click" Grid.Row="1" Grid.Column="1" Margin="2,1,1,1" FontSize="18" BorderThickness="0" >C</Button>
+            <Button x:Name="DelBtn"  Click="DelBtn_Click" Grid.Row="1" Grid.Column="2" Margin="2,1,1,1" FontSize="18" BorderThickness="0" >←</Button>
+            <Button x:Name="DiviBtn" Click="OP_Click" Grid.Row="1" Grid.Column="3" Margin="2,1,1,1" FontSize="18" BorderThickness="0" >÷</Button>
+            <Button x:Name="btn7"  Click="Button_Click"  Grid.Row="2" Grid.Column="0" Margin="2,1,1,1"  Background="WhiteSmoke" FontSize="22" FontWeight="Bold" BorderThickness="0" >7</Button>
+            <Button x:Name="btn8"  Click="Button_Click"  Grid.Row="2" Grid.Column="1" Margin="2,1,1,1"  Background="WhiteSmoke" FontSize="22" FontWeight="Bold" >8</Button>
+            <Button x:Name="btn9"  Click="Button_Click"  Grid.Row="2" Grid.Column="2" Margin="2,1,1,1"  Background="WhiteSmoke" FontSize="22" FontWeight="Bold" BorderThickness="0" >9</Button>
+            <Button x:Name="MultiBtn"  Click="OP_Click"  Grid.Row="2" Grid.Column="3" Margin="2,1,1,1" FontSize="25" BorderThickness="0" >×</Button>
+            <Button x:Name="btn4"  Click="Button_Click"  Grid.Row="3" Grid.Column="0" Margin="2,1,1,1" Background="WhiteSmoke"  FontSize="22" FontWeight="Bold"  BorderThickness="0" >4</Button>
+            <Button x:Name="btn5"  Click="Button_Click"  Grid.Row="3" Grid.Column="1" Margin="2,1,1,1"  Background="WhiteSmoke" FontSize="22" FontWeight="Bold"  BorderThickness="0" >5</Button>
+            <Button x:Name="btn6"  Click="Button_Click"  Grid.Row="3" Grid.Column="2" Margin="2,1,1,1"  Background="WhiteSmoke" FontSize="22" FontWeight="Bold" BorderThickness="0" >6</Button>
+            <Button x:Name="SubBtn"  Click="OP_Click"  Grid.Row="3" Grid.Column="3" Margin="2,1,1,1" FontSize="25" BorderThickness="0" >-</Button>
+            <Button x:Name="btn3"  Click="Button_Click"   Grid.Row="4" Grid.Column="0" Margin="2,1,1,1" Background="WhiteSmoke"  FontSize="22" FontWeight="Bold" BorderThickness="0" >3</Button>
+            <Button x:Name="btn2"  Click="Button_Click"  Grid.Row="4" Grid.Column="1" Margin="2,1,1,1"  Background="WhiteSmoke" FontSize="22" FontWeight="Bold" BorderThickness="0" >2</Button>
+            <Button x:Name="btn1"  Click="Button_Click"  Grid.Row="4" Grid.Column="2" Margin="2,1,1,1" Background="WhiteSmoke"  FontSize="22" FontWeight="Bold" BorderThickness="0" >1</Button>
+            <Button x:Name="PlusBtn"  Click="OP_Click"   Grid.Row="4" Grid.Column="3" Margin="2,1,1,1" FontSize="25" BorderThickness="0" >+</Button>
+            <Button x:Name="PMBtn" Click="PMBtn_Click" Grid.Row="5" Grid.Column="0" Margin="2,1,1,1" FontSize="25" BorderThickness="0" >±</Button>
+            <Button x:Name="btn0"  Click="Button_Click"  Grid.Row="5" Grid.Column="1" Margin="2,1,1,1" Background="WhiteSmoke"  FontSize="22" FontWeight="Bold" BorderThickness="0" >0</Button>
+            <Button x:Name="DotBtn"  Click="ButtonDot_Click"   Grid.Row="5" Grid.Column="2" Margin="2,1,1,1" FontSize="25" BorderThickness="0" >.</Button>
+            <Button x:Name="ResBtn" Click="ResBtn_Click" Grid.Row="5" Grid.Column="3" Margin="2,1,1,1" FontSize="25" BorderThickness="0" >=</Button>
+        </Grid>
+        
+        
+        
+    </DockPanel>
 </Window>
