@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,7 @@ namespace Calculator
 
         public string OP = string.Empty;
         private double memory = 0;
+        public List<string> al = new List<string>();
 
 
 
@@ -39,6 +41,7 @@ namespace Calculator
 
             MRBtn.IsEnabled = false;
             MCBtn.IsEnabled = false;
+    
 
 
 
@@ -112,29 +115,42 @@ namespace Calculator
             double r = double.Parse(tRes.Text);
                  switch (OP)
             {
-                case "+":  tRes.Text = (saved + r).ToString(); break; 
-                case "-":  tRes.Text = (saved - r).ToString(); break; 
-                case "×":  tRes.Text = (saved * r).ToString(); break; 
+                case "+":  tRes.Text = (saved + r).ToString();
+                    al.Add( saved.ToString()+""+OP+ ""+ r.ToString()+" ="+ tRes.Text +"\n");
+                    tExp.Text = saved + " " + OP + r + " =";
+                    break; 
+                case "-":  tRes.Text = (saved - r).ToString();
+                    al.Add(saved.ToString() + "" + OP + "" + r.ToString() + " =" + tRes.Text + "\n");
+                    tExp.Text = saved + " " + OP + r + " =";
+                    break; 
+                case "×":  tRes.Text = (saved * r).ToString();
+                    al.Add(saved.ToString() + "" + OP + "" + r.ToString() + " =" + tRes.Text + "\n");
+                    tExp.Text = saved + " " + OP + r + " =";
+                    break; 
                 case "÷":
 
 
 
                     double result = (saved / r);
-                    if (result == 0)
+                    if (result != 0 &&  Double.IsInfinity(result)==false)
                     {
-                        tRes.Text = "cannot divide by zero  error";
-                                      }
+                        tExp.Text = saved + "" + OP + r + " =";
+                        tRes.Text = result.ToString();
+                        al.Add(saved.ToString() + "" + OP + "" + r.ToString() + " =" + tRes.Text + "\n");
+
+
+                    }
                     else 
                     {
-                        tRes.Text = result.ToString();
-                
+                        MessageBox.Show("You cannot divide by zero");
+                        tRes.Text = "0";
                     }
                     
                     break; 
 
             }
 
-            tExp.Text = saved + " " + OP+ r + " =" ;
+
 
         }
 
@@ -143,7 +159,7 @@ namespace Calculator
 
             tExp.Text = "√(" + tRes.Text + ")";
             tRes.Text = Math.Sqrt(double.Parse(tRes.Text)).ToString();
-
+ 
         }
 
         private void ReBtn_Click(object sender, RoutedEventArgs e)
@@ -157,7 +173,7 @@ namespace Calculator
         {
      
             tExp.Text = "%(" + tRes.Text + ")";
-            tRes.Text = ((double.Parse(tRes.Text) / 100)*100).ToString() + "%";
+            tRes.Text = ((double.Parse(tRes.Text) / 100)*100).ToString();
         }
 
         private void PowBtn_Click(object sender, RoutedEventArgs e)
@@ -237,6 +253,43 @@ namespace Calculator
             MRBtn.IsEnabled = true;
 
 
+
+        }
+
+        private void History_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            PanelH.Visibility =Visibility.Visible;
+
+            Array a = al.ToArray();
+            
+            for( int i=0; i < a.Length-1; i++)
+            {
+
+                conList.Text += a.GetValue(i);
+
+
+
+
+            }
+
+
+            //  Window win = new Window();
+            //  UserControl1 eDoc = new UserControl1();
+            //  win.Content = eDoc;
+            //  win.Title = "User Control1";
+            //  win.Show();
+
+
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+
+            PanelH.Visibility = Visibility.Hidden;
+
+            conList.Text = "";
 
         }
     }
